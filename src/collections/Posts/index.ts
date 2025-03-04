@@ -13,8 +13,8 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { generatePreviewPath } from '@/utils/generatePreviewPath'
 import { slugField } from '@/fields/slug'
+import { generatePreviewPath, generatePublishedPath } from '@/utils/generatePreviewPath'
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
@@ -37,25 +37,26 @@ export const Posts: CollectionConfig<'posts'> = {
     },
   },
   admin: {
-    defaultColumns: ['title', 'slug', 'updatedAt'],
-    livePreview: {
-      url: ({ data, req }) => {
-        const path = generatePreviewPath({
-          slug: typeof data?.slug === 'string' ? data.slug : '',
-          collection: 'posts',
-          req,
-        })
-
-        return path
-      },
-    },
-    preview: (data, { req }) =>
-      generatePreviewPath({
-        slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'posts',
-        req,
-      }),
     useAsTitle: 'title',
+    defaultColumns: ['title', 'slug', 'updatedAt'],
+
+    // livePreview: {
+    //   url: ({ data, req }) => {
+    //     const path = generatePreviewPath({
+    //       slug: typeof data?.slug === 'string' ? data.slug : '',
+    //       collection: 'posts',
+    //       req,
+    //     })
+
+    //     return path
+    //   },
+    // },
+    // preview: (data, { req }) =>
+    //   generatePreviewPath({
+    //     slug: typeof data?.slug === 'string' ? data.slug : '',
+    //     collection: 'posts',
+    //     req,
+    //   }),
   },
   fields: [
     {

@@ -22,3 +22,9 @@ export const generatePreviewPath = ({ collection, slug }: Props) => {
 
   return url
 }
+
+export const generatePublishedPath = ({ collection, slug }: Props) => {
+  const url = `${collectionPrefixMap[collection]}/${slug}`
+
+  return url
+}
