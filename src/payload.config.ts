@@ -19,13 +19,13 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 const generateTitle: GenerateTitle<Post> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
+  return doc?.title ? `${doc.title} | Himanshu Gunwant Blog` : 'Himanshu Gunwant Blog'
 }
 
 const generateURL: GenerateURL<Post> = ({ doc }) => {
   const url = getServerSideURL()
 
-  return doc?.slug ? `${url}/${doc.slug}` : url
+  return doc?.slug ? `${url}/post/${doc.slug}` : url
 }
 
 export default buildConfig({

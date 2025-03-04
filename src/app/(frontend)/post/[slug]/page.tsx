@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 
-type ISinglePosrPrsts = {}
+type ISinglePostPrsts = {}
 
-const SinglePost: FC<ISinglePosrPrsts> = () => {
+const SinglePost: FC<ISinglePostPrsts> = () => {
   return <div>SinglePost</div>
 }
 
