@@ -11,7 +11,8 @@ import {
   LinkJSXConverter,
   RichText as RichTextWithoutBlocks,
 } from '@payloadcms/richtext-lexical/react'
-import type { MediaBlock as MediaBlockProps } from '@/payload-types'
+import type { MediaBlock as MediaBlockProps, CodeBlock as CodeBlockProps } from '@/payload-types'
+import { CodeBlock } from '@/blocks/Code/Component'
 
 type Props = {
   data: SerializedEditorState
@@ -19,7 +20,7 @@ type Props = {
   enableProse?: boolean
 } & React.HTMLAttributes<HTMLDivElement>
 
-type NodeTypes = DefaultNodeTypes | SerializedBlockNode<MediaBlockProps>
+type NodeTypes = DefaultNodeTypes | SerializedBlockNode<MediaBlockProps | CodeBlockProps>
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!
@@ -35,7 +36,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
   ...LinkJSXConverter({ internalDocToHref }),
   blocks: {
     // banner: ({ node }) => <BannerBlockProps className="col-start-2 mb-4" {...node.fields} />,
-    // code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
+    code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
     // cta: ({ node }) => <CallToActionBlock {...node.fields} />,
     mediaBlock: ({ node }) => (
       <MediaBlock

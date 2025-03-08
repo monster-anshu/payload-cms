@@ -13,6 +13,7 @@ import {
   InlineToolbarFeature,
   HorizontalRuleFeature,
 } from '@payloadcms/richtext-lexical'
+import { Code } from '@/blocks/Code/config'
 
 export const MediaBlock: Block = {
   slug: 'mediaBlock',
@@ -62,7 +63,7 @@ export const defaultLexical = lexicalEditor({
       },
     }),
     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-    BlocksFeature({ blocks: [MediaBlock] }),
+    BlocksFeature({ blocks: [MediaBlock, Code] }),
     FixedToolbarFeature(),
     InlineToolbarFeature(),
     HorizontalRuleFeature(),
