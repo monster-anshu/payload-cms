@@ -22,18 +22,19 @@ export const PostCard: React.FC<{
   const sanitizedDescription = description?.replace(/\s/g, ' ') // replace non-breaking space with white space
   const href = `/post/${slug}`
   const cardImage = metaImage || doc.heroImage
-  console.log(cardImage)
+
   return (
-    <article
-      className={cn(
-        'border border-border rounded-lg overflow-hidden bg-PostCard hover:cursor-pointer',
-        className,
-      )}
-    >
-      <div className="relative w-full">
-        {!cardImage && <div className="">No image</div>}
+    <article className={cn('border border-border rounded-lg overflow-hidden', className)}>
+      <div className="relative w-full bg-secondary">
+        {!cardImage && (
+          <div className="aspect-video w-full h-full flex justify-center items-center">
+            No image
+          </div>
+        )}
         {cardImage && typeof cardImage !== 'string' && (
-          <Media resource={cardImage} className="aspect-video object-cover" fill />
+          <Link href={href}>
+            <Media resource={cardImage} className="aspect-video object-cover" fill />
+          </Link>
         )}
       </div>
       <div className="p-4">

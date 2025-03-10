@@ -11,7 +11,7 @@ import {
   LinkJSXConverter,
   RichText as RichTextWithoutBlocks,
 } from '@payloadcms/richtext-lexical/react'
-import type { MediaBlock as MediaBlockProps, CodeBlock as CodeBlockProps } from '@/payload-types'
+import type { CodeBlock as CodeBlockProps } from '@/payload-types'
 import { CodeBlock } from '@/blocks/Code/Component'
 
 type Props = {
@@ -20,7 +20,7 @@ type Props = {
   enableProse?: boolean
 } & React.HTMLAttributes<HTMLDivElement>
 
-type NodeTypes = DefaultNodeTypes | SerializedBlockNode<MediaBlockProps | CodeBlockProps>
+type NodeTypes = DefaultNodeTypes | SerializedBlockNode<CodeBlockProps>
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!
@@ -34,18 +34,11 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) => ({
   ...defaultConverters,
   ...LinkJSXConverter({ internalDocToHref }),
+  upload: ({ node }) => <MediaBlock node={node} />,
   blocks: {
     // banner: ({ node }) => <BannerBlockProps className="col-start-2 mb-4" {...node.fields} />,
-    code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
     // cta: ({ node }) => <CallToActionBlock {...node.fields} />,
-    mediaBlock: ({ node }) => (
-      <MediaBlock
-        className="col-start-1 col-span-3"
-        imgClassName="m-0"
-        {...node.fields}
-        enableGutter={false}
-      />
-    ),
+    code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
   },
 })
 

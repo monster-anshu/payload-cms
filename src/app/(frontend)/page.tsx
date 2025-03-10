@@ -22,7 +22,7 @@ export default async function HomePage() {
 
   return (
     <main>
-      <div className="container mb-8">
+      <div className="container mb-8 py-4 pt-8">
         <h1 className="text-4xl">Blogs</h1>
       </div>
       <div className="container">
