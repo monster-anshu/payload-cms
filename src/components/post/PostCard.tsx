@@ -37,7 +37,7 @@ export const PostCard: React.FC<{
           </Link>
         )}
       </div>
-      <div className="p-4">
+      <div className="p-4 border-t">
         {showCategories && hasCategories && (
           <div className="uppercase text-sm mb-4">
             {showCategories && hasCategories && (

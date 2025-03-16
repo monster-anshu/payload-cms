@@ -42,7 +42,7 @@ export default async function Post({ params: paramsPromise }: Args) {
   }
 
   return (
-    <article className="pt-16 pb-16">
+    <article className="py-8">
       <PostHero post={post} />
       <div className="flex flex-col items-center gap-4 pt-8">
         <div className="container">
