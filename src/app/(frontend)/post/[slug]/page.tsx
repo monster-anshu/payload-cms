@@ -6,6 +6,8 @@ import type { Post } from '@/payload-types'
 import { notFound } from 'next/navigation'
 import { PostHero } from '@/components/post/PostHero'
 import RichText from '@/components/rich-text'
+import { generateMeta } from '@/utils/generateMeta'
+import { Metadata } from 'next'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
