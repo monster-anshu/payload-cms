@@ -61,12 +61,12 @@ export default async function Post({ params: paramsPromise }: Args) {
   )
 }
 
-// export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
-//   const { slug = '' } = await paramsPromise
-//   const post = await queryPostBySlug({ slug })
+export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
+  const { slug = '' } = await paramsPromise
+  const post = await queryPostBySlug({ slug })
 
-//   return generateMeta({ doc: post })
-// }
+  return generateMeta({ doc: post })
+}
 
 const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
   const { isEnabled: draft } = await draftMode()
