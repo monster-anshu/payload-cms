@@ -5,6 +5,8 @@ import type { Post } from '@/payload-types'
 import { Media } from '@/components/media'
 import { formatAuthors } from '@/utils/formatAuthors'
 import { formatDateTime } from '@/utils/formatDateTime'
+import Link from 'next/link'
+import { MoveLeft } from 'lucide-react'
 
 export const PostHero: React.FC<{
   post: Post
@@ -16,7 +18,10 @@ export const PostHero: React.FC<{
 
   return (
     <div className="max-w-[48rem] mx-auto">
-      <h1 className="mb-5 text-xl md:text-2xl lg:text-4xl">{title}</h1>
+      <Link href={'/'}>
+        <MoveLeft />
+      </Link>
+      <h1 className="mb-5 mt-6 text-xl md:text-2xl lg:text-4xl">{title}</h1>
       <div className="flex mb-6 flex-col md:flex-row gap-4 md:gap-8 text-foreground/80">
         {hasAuthors && (
           <div className="flex flex-col gap-0.5">
